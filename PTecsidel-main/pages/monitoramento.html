@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento Free Flow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../pages/assets/styleMonitoramento.css">
+<body>
+    <div class="container">
+        <h1>Monitoramento Free Flow</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Status dos Equipamentos</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Equipamento</th>
+                            <th>Status</th>
+                            <th>Última Atualização</th>
+                        </tr>
+                    </thead>
+                    <tbody id="equipmentTableBody">
+                        <tr>
+                            <td>Câmera 1</td>
+                            <td><span class="status-indicator status-online"></span> Online</td>
+                            <td>18/05/2024 14:32</td>
+                        </tr>
+                        <tr>
+                            <td>Antena 1</td>
+                            <td><span class="status-indicator status-offline"></span> Offline</td>
+                            <td>18/05/2024 14:28</td>
+                        </tr>
+                        <tr>
+                            <td>Sensor 1</td>
+                            <td><span class="status-indicator status-online"></span> Online</td>
+                            <td>18/05/2024 14:35</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-6">
+                <h2>Informações dos Veículos</h2>
+                <div id="vehicleInfo">
+                    <div class="vehicle-card">
+                        <p><span class="vehicle-info-label">Placa:</span> ABC-1234</p>
+                        <p><span class="vehicle-info-label">Tipo:</span> Carro</p>
+                        <p><span class="vehicle-info-label">Data/Hora:</span> 18/05/2024 14:32</p>
+                    </div>
+                    <div class="vehicle-card">
+                        <p><span class="vehicle-info-label">Placa:</span> XYZ-5678</p>
+                        <p><span class="vehicle-info-label">Tipo:</span> Caminhão</p>
+                        <p><span class="vehicle-info-label">Data/Hora:</span> 18/05/2024 14:35</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chartContainer"></div>
+
+        <footer>
+            <p>&copy; 2024 TECSIDEL. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function() {
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Tráfego de Veículos"
+                },
+                axisY: {
+                    title: "Quantidade de Veículos"
+                },
+                data: [{
+                    type: "column",
+                    dataPoints: [
+                        { label: "12:00", y: 15 },
+                        { label: "13:00", y: 25 },
+                        { label: "14:00", y: 30 },
+                        { label: "15:00", y: 28 },
+                        { label: "16:00", y: 22 }
+                    ]
+                }]
+            });
+            chart.render();
+        }
+    </script>
+</body>
+</html>
